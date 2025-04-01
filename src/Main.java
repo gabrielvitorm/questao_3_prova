@@ -4,29 +4,22 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner leitor = new Scanner(System.in);
-        String nome;
-        Double preco;
-        Double precoTotal;
-        int estoqueInicial;
-        int estoquePosVenda;
-        int qtqVendida;
+        Estoque estoque = new Estoque();
 
         System.out.println("Digite o nome do produto:");
-        nome = leitor.next();
+        estoque.setNomeProduto(leitor.next());
 
         System.out.println("Digite o preço do produto:");
-        preco = leitor.nextDouble();
+        estoque.setPrecoProduto(leitor.nextDouble());
 
         System.out.println("Digite o estoque inicial do produto:");
-        estoqueInicial = leitor.nextInt();
+        estoque.setEstoqueInicialProduto(leitor.nextInt());
 
         System.out.println("Digite a quantidade vendida do produto:");
-        qtqVendida = leitor.nextInt();
+        estoque.setQtqVendidaProduto(leitor.nextInt());
 
-        precoTotal = preco * qtqVendida;
+        estoque.reduzirEstoque();
 
-        estoquePosVenda = estoqueInicial - qtqVendida;
-
-        System.out.println(String.format("Produto: %s\nPreço: %.2f\nEstoque antes da venda: %d unidades\nVenda realizada: %d unidades\nEstoque atualizado: %d", nome, preco, estoqueInicial, qtqVendida, estoquePosVenda));
+        System.out.println(String.format("Produto: %s\nPreço: %.2f\nEstoque antes da venda: %d unidades\nVenda realizada: %d unidades\nEstoque atualizado: %d", estoque.getNomeProduto(), estoque.getPrecoProduto(), estoque.getEstoqueInicialProduto(), estoque.getQtqVendidaProduto(), estoque.getEstoquePosVendaProduto()));
     }
 }
